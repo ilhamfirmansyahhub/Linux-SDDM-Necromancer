@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+Name=Necromancer SDDM
+Description=Custom SDDM theme matched to the supplied screenshot
+Author=Ilham Firmansyah
+Copyright=2026
+License=MIT
+Type=sddm-theme
+Version=1.5
+QtVersion=6
+MainScript=Main.qml
+ConfigFile=theme.conf
