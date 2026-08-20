@@ -1,125 +1,110 @@
 # Necromancer SDDM
 
-A compact **Qt6/QML SDDM theme** with a dark post-apocalyptic aesthetic, designed to keep the wallpaper visible while providing a clean, minimal login interface.
+A small Qt6/QML theme for SDDM with a dark post-apocalyptic look. The layout is kept simple so the wallpaper stays visible instead of sitting behind a large login panel.
 
 ![Necromancer SDDM](https://raw.githubusercontent.com/ilhamfirmansyahhub/Linux-SDDM-Necromancer/main/assets/background.jpg)
 
-## ✨ Features
+## What it includes
 
-- Wallpaper-first design with no large panel behind the login form
-- Compact bordered username, password, and **Login** controls
-- Clickable **user selector** above the login form
-- Clickable **session selector** in the bottom-left corner
-- Smooth hover and menu animations
-- Qt6 / QML based SDDM greeter
-- Simple installer for Arch Linux and other distributions using SDDM
-- Existing `background.jpg` is preserved by the installer
+- Compact username and password fields
+- Bordered login button
+- User selection above the login form
+- Session selection in the bottom-left corner
+- Simple hover and menu animations
+- Qt6/QML SDDM greeter
+- Installer script for setting the theme up
 
-## 📸 Background
+## Wallpaper
 
-The theme uses a 2560×1440 post-apocalyptic wallpaper from WallpaperFlare.
+The theme was made around this 2560×1440 wallpaper from WallpaperFlare:
 
-The wallpaper is **not bundled with this repository**. You need to download it yourself and save it as:
+https://www.wallpaperflare.com/zombie-apocalypse-post-apocalypse-hackerman-hack-hacking-wallpaper-yisws/download/2560x1440
+
+The image is not included in the repository. Download it manually and save it as:
 
 ```text
 assets/background.jpg
 ```
 
-Wallpaper source:
+The filename needs to be exactly `background.jpg`.
 
-<https://www.wallpaperflare.com/zombie-apocalypse-post-apocalypse-hackerman-hack-hacking-wallpaper-yisws/download/2560x1440>
+## Requirements
 
-Make sure the downloaded file is named exactly `background.jpg`.
-
-## 📦 Requirements
-
-Before installing, make sure your system has:
+You need:
 
 - SDDM
-- Qt6 / QtQuick support for your SDDM build
-- `git`
-- `curl` or `wget`
+- A Qt6-compatible SDDM greeter
+- Git
+- A Linux desktop using SDDM
 
-On Arch Linux / CachyOS, SDDM can be installed with:
+On Arch Linux or CachyOS, SDDM can be installed with:
 
 ```bash
 sudo pacman -S sddm
 ```
 
-If you already use SDDM, you do not need to install it again.
+If SDDM is already installed and working, there is nothing else to install.
 
-## 🚀 Installation
+## Install
 
-### 1. Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/ilhamfirmansyahhub/Linux-SDDM-Necromancer.git
 cd Linux-SDDM-Necromancer
 ```
 
-### 2. Add the wallpaper
-
-Create the assets directory if it does not already exist:
+Create the assets directory and put the wallpaper there:
 
 ```bash
 mkdir -p assets
 ```
 
-Download the **2560×1440** wallpaper from WallpaperFlare using your browser and save it as:
+After downloading the wallpaper, make sure this file exists:
 
 ```text
 assets/background.jpg
 ```
 
-Check that the file exists:
-
-```bash
-ls -lh assets/background.jpg
-```
-
-### 3. Install the theme
-
-Make the installer executable:
+Then run the installer:
 
 ```bash
 chmod +x install.sh
-```
-
-Run it as root:
-
-```bash
 sudo ./install.sh
 ```
 
-The installer will install the theme to:
+The theme is installed to:
 
 ```text
 /usr/share/sddm/themes/necromancer-sddm
 ```
 
-and enable it using:
+and SDDM is configured to use it through:
 
 ```text
 /etc/sddm.conf.d/99-necromancer-sddm.conf
 ```
 
-### 4. Preview before logging out
+## Preview
 
-You can test the greeter from your current desktop session:
+You can test the theme before logging out:
 
 ```bash
 sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/necromancer-sddm
 ```
 
-This lets you check the layout without immediately logging out of your desktop.
+Depending on the distribution, the greeter executable may have a different name. You can check with:
 
-### 5. Log out or reboot
+```bash
+command -v sddm-greeter
+command -v sddm-greeter-qt6
+```
 
-After confirming the preview looks correct, log out or reboot. SDDM should now use the **Necromancer** theme automatically.
+Once everything looks right, log out or reboot and SDDM should load the theme normally.
 
-## 🎨 Layout
+## Layout
 
-The theme is arranged as follows:
+The current layout is roughly:
 
 ```text
                          Clock
@@ -133,70 +118,62 @@ The theme is arranged as follows:
 [ Session selector ]
 ```
 
-The login form is intentionally compact and sits directly over the wallpaper without a large background panel.
+The login area is intentionally small and sits directly over the wallpaper.
 
-## ⚙️ Configuration
-
-The main theme files are located in:
+## Files
 
 ```text
-/usr/share/sddm/themes/necromancer-sddm/
+Main.qml          Main UI and login logic
+theme.conf        Theme settings
+metadata.desktop  SDDM theme metadata
+install.sh        Installation script
+assets/           Wallpaper file
 ```
 
-Important files:
+The main UI can be adjusted in `Main.qml`. After making changes, run the installer again.
 
-```text
-Main.qml          # Main UI and behavior
-theme.conf        # Theme configuration
-metadata.desktop  # SDDM theme metadata
-install.sh        # Installer
-assets/           # Wallpaper assets
-```
+## Uninstall
 
-To change the appearance, edit `Main.qml` and reinstall the theme.
-
-## 🗑️ Uninstall
-
-Remove the installed theme:
+Remove the theme:
 
 ```bash
 sudo rm -rf /usr/share/sddm/themes/necromancer-sddm
 ```
 
-Then remove the SDDM theme selection file:
+Remove the SDDM configuration:
 
 ```bash
 sudo rm -f /etc/sddm.conf.d/99-necromancer-sddm.conf
 ```
 
-After that, select another SDDM theme in your system configuration or create a new SDDM theme configuration.
+Then choose another SDDM theme or set another theme in your SDDM configuration.
 
-## 🖥️ Distribution Compatibility
+## Compatibility
 
-The theme is primarily developed and tested with **Arch Linux / CachyOS + SDDM**.
+This theme is mainly developed and tested on Arch Linux / CachyOS with SDDM.
 
-It should also work on other Linux distributions that provide a compatible **Qt6 SDDM greeter**, but package names and SDDM configuration paths may differ.
+It should work on other distributions as long as they provide a compatible Qt6 SDDM greeter. SDDM configuration paths and package names may be different depending on the distro.
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
-### The wallpaper is missing
+### Wallpaper is not showing
 
-Make sure this file exists:
+Check that the file was installed:
 
 ```bash
 ls -lh /usr/share/sddm/themes/necromancer-sddm/assets/background.jpg
 ```
 
-If it does not exist, copy your wallpaper again:
+If it is missing, copy it again:
 
 ```bash
 sudo mkdir -p /usr/share/sddm/themes/necromancer-sddm/assets
 sudo cp assets/background.jpg /usr/share/sddm/themes/necromancer-sddm/assets/
 ```
 
-### The theme does not appear
+### SDDM is not using the theme
 
-Check which theme SDDM is configured to use:
+Check the configuration:
 
 ```bash
 cat /etc/sddm.conf.d/99-necromancer-sddm.conf
@@ -209,29 +186,18 @@ It should contain:
 Current=necromancer-sddm
 ```
 
-Also verify that SDDM is installed and enabled:
+Also check that SDDM is enabled:
 
 ```bash
 systemctl is-enabled sddm
 ```
 
-### The preview command is unavailable
+## Credits
 
-Some distributions use a different SDDM greeter executable. Check which one is installed:
+Theme by **ilhamfirmansyahhub**.
 
-```bash
-command -v sddm-greeter
-command -v sddm-greeter-qt6
-```
+Background: WallpaperFlare (link above).
 
-Use the executable provided by your distribution.
-
-## 📄 License
+## License
 
 MIT
-
-## 🙏 Credits
-
-- Theme and QML implementation: **ilhamfirmansyahhub**
-- Background artwork: WallpaperFlare (see source link above)
-- Built for the Linux / SDDM ecosystem
