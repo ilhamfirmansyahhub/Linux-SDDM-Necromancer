@@ -2,7 +2,6 @@
 
 A small Qt6/QML theme for SDDM with a dark post-apocalyptic look. The layout is kept simple so the wallpaper stays visible instead of sitting behind a large login panel.
 
-![Necromancer SDDM](https://raw.githubusercontent.com/ilhamfirmansyahhub/Linux-SDDM-Necromancer/main/assets/background.jpg)
 
 ## What it includes
 
